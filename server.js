@@ -1,20 +1,20 @@
-import express                   from 'express';
-import React                     from 'react';
-import { renderToString }        from 'react-dom/server'
+import express from 'express';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
 import { RoutingContext, match } from 'react-router';
-import createLocation            from 'history/lib/createLocation';
+import createLocation from 'history/lib/createLocation';
 import { createStore, combineReducers } from 'redux';
-import { Provider }                     from 'react-redux';
-import * as reducers                    from 'reducers';
+import { Provider } from 'react-redux';
 
-import routes                    from 'routes';
+import * as reducers from 'reducers';
+import routes from 'routes';
 
 const app = express();
 
 app.use((req, res) => {
   const location = createLocation(req.url);
-  const reducer  = combineReducers(reducers);
-  const store    = createStore(reducer);
+  const reducer = combineReducers(reducers);
+  const store = createStore(reducer);
 
   match({ routes, location }, (err, redirectLocation, renderProps) => {
     if (err) {
@@ -47,8 +47,9 @@ app.use((req, res) => {
         <script type="application/javascript" src="/bundle.js"></script>
       </body>
   </html>
-`
+`;
     res.end(HTML);
   });
 });
+
 export default app;

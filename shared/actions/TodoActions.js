@@ -3,7 +3,7 @@ export function createTodo(text) {
     type: 'CREATE_TODO',
     text,
     date: Date.now()
-  }
+  };
 }
 export function editTodo(id, text) {
   return {

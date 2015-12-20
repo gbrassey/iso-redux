@@ -1,14 +1,14 @@
 import React from 'react';
 
 export default class TodosView extends React.Component {
-  handleDelete = (e) => {
+  handleDelete = e => {
     const id = Number(e.target.dataset.id);
 
     // Equivalent to `dispatch(deleteTodo())`
     this.props.deleteTodo(id);
   }
 
-  handleEdit = (e) => {
+  handleEdit = e => {
     const id  = Number(e.target.dataset.id);
     const val = this.props.todos.get(id).text
 
